@@ -1,0 +1,66 @@
+#bingo-board {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 10px;
+    max-width: 100%; /* Adjusts to the width of the container */
+    margin: auto;
+    padding: 20px;
+}
+
+.bingo-square {
+    width: 100%;
+    height: auto;
+    min-height: 100px; /* Ensures minimum height for larger text */
+    border: 1px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem; /* Adjust font size for better readability */
+    text-align: center;
+    word-wrap: break-word;
+    padding: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.bingo-square.marked {
+    background-color: #00FF00;
+}
+
+@media (max-width: 600px) {
+    .bingo-square {
+        min-height: 80px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .bingo-square {
+        min-height: 60px;
+        font-size: 0.9rem;
+    }
+}
+
+@keyframes sparkle {
+    0% { opacity: 0.8; }
+    50% { opacity: 1; }
+    100% { opacity: 0.8; }
+}
+
+.bingo-square {
+    animation: sparkle 1.5s infinite;
+    background-color: #FF69B4;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.bingo-square {
+    background: url('https://www.transparenttextures.com/patterns/glitter.png'), #FF69B4;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
