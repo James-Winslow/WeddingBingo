@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-**WeddingBingo** is a Python-based web application built using the Flask framework. The app generates randomized bingo cards with a fixed center square ("Corey"). It is deployed on Azure using the App Service Plan in the Free Tier, demonstrating my ability to utilize cloud computing platforms for hosting and managing web applications.
+**WeddingBingo** is a Python-based web application built using the Flask framework. The app generates randomized bingo cards with a fixed center square ("Someone yells BINGO"). It is deployed on Azure using the App Service Plan in the Free Tier, demonstrating my ability to utilize cloud computing platforms for hosting and managing web applications.
 
 ## Skills Demonstrated
 
