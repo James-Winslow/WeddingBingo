@@ -32,9 +32,11 @@
     transform: translate(-50%, -50%);
     width: 90%;
     text-align: center;
-    word-wrap: break-word;
     line-height: 1.2em;
     font-size: calc(1.2vw + 1.2vh); /* Ensures responsive font size */
+    white-space: nowrap; /* Prevents words from breaking across lines */
+    overflow: hidden; /* Hides overflow if text is too long */
+    text-overflow: ellipsis; /* Adds ellipsis (...) if text is too long */
 }
 
 .bingo-square.marked {
