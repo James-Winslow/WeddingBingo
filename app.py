@@ -7,13 +7,13 @@ app = Flask(__name__)
 def bingo():
     # List of all bingo square texts, except for "Corey"
     bingo_texts = [
-        "Sedor", "Taylor Johnson", "Corey", "\"I object!\" by an ex",
-        "Brett", "Janay", "Zag flag", "Parents kiss", "YMCA", "Vanilla cake",
+        "Spilled Drink", "Someone Trips", "Corey", "Controversial Politics",
+        "Long homily", "Shots!", "Zag flag", "Parents kiss", "YMCA", "Vanilla cake",
         "Asleep @ mass", "A Gonzaga chant", "Cringey toast",
-        "A child shows up", "Snoozie appearance", "Sister's water breaks",
+        "A child shows up", "Snoozie appearance", "Fly down",
         "Blood or vomit", "Someone flirts with Jimmy", "Rehearsed first dance",
         "Country mother/son dance", "Classical mother/son dance",
-        "Wrong suit", "Nick cries", "Antonia."
+        "Wrong suit", "Nick cries", "Antonia Slays"
     ]
 
     # Shuffle the list

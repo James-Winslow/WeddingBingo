@@ -9,11 +9,10 @@
 <body>
     <div id="bingo-board">
         {% for row in bingo_board %}
-            {% for text in row %}
-                <div class="bingo-square">{{ text }}</div>
+            {% for item in row %}
+                <div class="bingo-square"><div>{{ item }}</div></div>
             {% endfor %}
         {% endfor %}
     </div>
-    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
 </body>
 </html>
