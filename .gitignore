@@ -1,12 +1,1 @@
-*.DS_Store
-venv/
-__pycache__/
-.env
-*.log
-*.sqlite3
-*.pyc
-.vscode/
 cleanenv/
-.idea/
-node_modules/
-*.iml
