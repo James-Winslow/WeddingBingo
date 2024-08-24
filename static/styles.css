@@ -3,7 +3,7 @@
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 10px;
     width: 100%;
-    max-width: 90vh;
+    max-width: 90vh; /* Ensures the grid fits within the viewport */
     margin: auto;
 }
 
@@ -17,7 +17,7 @@
     align-items: center;
     text-align: center;
     box-sizing: border-box;
-    background: #0040ff;
+    background: #0040ff; /* Ultramarine blue background */
     color: white;
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
@@ -34,8 +34,21 @@
     text-align: center;
     word-wrap: break-word;
     line-height: 1.2em;
+    font-size: calc(1.2vw + 1.2vh); /* Ensures responsive font size */
 }
 
 .bingo-square.marked {
-    background-color: #d20606;
+    background-color: #FFD700; /* Gold color for marked squares */
+}
+
+@media (max-width: 600px) {
+    .bingo-square div {
+        font-size: calc(1vw + 1vh); /* Smaller font size for smaller screens */
+    }
+}
+
+@media (max-width: 400px) {
+    .bingo-square div {
+        font-size: calc(0.8vw + 0.8vh); /* Further reduces font size for the smallest screens */
+    }
 }
