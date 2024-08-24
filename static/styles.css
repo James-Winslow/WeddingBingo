@@ -40,7 +40,7 @@
 }
 
 .bingo-square.marked {
-    background-color: #FFD700; /* Gold color for marked squares */
+    background-color: #ff0000; /* Gold color for marked squares */
 }
 
 @media (max-width: 600px) {
