@@ -3,21 +3,26 @@
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 10px;
     width: 100%;
-    max-width: 90vh; /* Ensures the grid fits within the viewport */
+    max-width: 90vh;
     margin: auto;
 }
 
 .bingo-square {
     width: 100%;
-    padding-top: 100%; /* This creates a square by making the height equal to the width */
+    padding-top: 100%; /* Ensures the square shape */
     position: relative;
     border: 1px solid #000;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: calc(1.5vw + 1.5vh); /* Responsive font size */
     text-align: center;
     box-sizing: border-box;
+    background: #0040ff;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    overflow-wrap: break-word;
 }
 
 .bingo-square div {
@@ -25,42 +30,12 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center;
+    word-wrap: break-word;
+    line-height: 1.2em;
 }
 
 .bingo-square.marked {
-    background-color: #00FF00;
+    background-color: #ff0000;
 }
-
-
-@media (max-width: 600px) {
-    .bingo-square {
-        min-height: 80px;
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 400px) {
-    .bingo-square {
-        min-height: 60px;
-        font-size: 0.9rem;
-    }
-}
-
-
-.bingo-square {
-    animation: sparkle 1.5s infinite;
-    background-color: #FF69B4;
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.4rem;
-    font-weight: bold;
-}
-
-.bingo-square {
-    background: url('https://www.transparenttextures.com/patterns/glitter.png'), #FF69B4;
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.4rem;
-    font-weight: bold;
-}
-
