@@ -1,0 +1,41 @@
+Summary of Commands to Deploy a Flask App to Azure
+Create a Resource Group:
+
+bash
+Copy code
+az group create --name BingoResourceGroup --location "East US"
+Create an App Service Plan:
+
+bash
+Copy code
+az appservice plan create --name BingoAppServicePlan --resource-group BingoResourceGroup --sku FREE --is-linux --location "East US"
+Create a Web App:
+
+bash
+Copy code
+az webapp create --resource-group BingoResourceGroup --plan BingoAppServicePlan --name WeddingBingo --runtime "PYTHON|3.9"
+Set Up Git Remote for Azure:
+
+bash
+Copy code
+git remote add azure https://<Azure-Username>@<App-Name>.scm.azurewebsites.net/<App-Name>.git
+Push Your Code to Azure:
+
+bash
+Copy code
+git push azure main
+Update the Branch to Match Azure: If necessary, rename the branch to match Azure's default:
+
+bash
+Copy code
+git branch -m main master
+git push -u azure master
+Handling Issues: If any issues arise during deployment, you may need to troubleshoot by:
+
+Checking the Azure logs using the Azure portal.
+Running git push azure master again if there are errors.
+Deleting Resources After Use: If you want to avoid any charges, delete the resources after you are done:
+
+bash
+Copy code
+az group delete --name BingoResourceGroup --yes --no-wait
