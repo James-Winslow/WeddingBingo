@@ -1,57 +1,87 @@
-# WeddingBingo
+# WeddingBingo 🎉
 
-## Project Overview
+Some projects are technically complex. This one was just the right tool at the right time.
 
-**WeddingBingo** is a Python-based web application built using the Flask framework. The app generates randomized bingo cards with a fixed center square ("Someone yells BINGO"). It was deployed on Azure using the App Service Plan in the Free Tier, demonstrating my ability to utilize cloud computing platforms for hosting and managing web applications. 
+I was sitting with a group of college friends I hadn't seen in years, catching up before our friend's wedding. Someone suggested wedding bingo — and then dared me to build a website so everyone could play on their phones during the reception. I'd been learning Azure recently, so I took the dare. A few hours later, we had a live web app. People used it at the wedding. It was a hit.
 
-## Skills Demonstrated
+**Live app:** [WeddingBingo.azurewebsites.net](https://WeddingBingo.azurewebsites.net) *(Azure deployment paused to avoid costs — see [Running Locally](#running-locally))*
 
-- **Python Development**: 
-  - Utilized the Flask framework to develop a dynamic web application.
-  - Demonstrated proficiency in creating RESTful routes and handling HTTP requests.
-  - Implemented logic for shuffling bingo squares and ensuring a unique "free" center square.
+![WeddingBingo board](wedding_bingo_board.png)
 
-- **Web Development**: 
-  - Created interactive and responsive web pages using HTML and CSS.
-  - Styled the bingo board with custom CSS to ensure a consistent and visually appealing design across devices.
-  - Adjusted font sizes and layout dynamically to fit different screen sizes, ensuring readability on mobile devices.
-  - Integrated JavaScript for interactive features like marking bingo squares.
+---
 
-- **Cloud Computing (Azure)**: 
-  - Deployed the Flask application on Azure App Service.
-  - Managed deployment pipelines using Azure’s Git integration.
-  - Utilized Azure CLI commands for creating and managing resources such as resource groups and service plans.
-  - Monitored and managed the application using Azure's portal and logs.
+## What It Does
 
-- **Version Control (Git/GitHub)**:
-  - Managed the project's source code using Git for version control.
-  - Pushed the project to a GitHub repository, demonstrating the ability to use GitHub for code hosting and collaboration.
-  - Documented deployment commands in a `.txt` file for future reference and replication.
+Each page load generates a unique, shuffled bingo card filled with wedding-specific predictions — things like *"Nick cries"*, *"Zag flag"*, *"Someone flirts with Jimmy"*, and *"Antonia Slays"*. Guests tap squares to mark them off as the night unfolds. No printing, no app download, no setup — just send the link.
 
-## Project Structure
+- Every page load generates a fresh, uniquely shuffled card
+- Fixed free space in the center: *"Someone yells BINGO"*
+- Tap or click any square to mark it — no page reload needed
+- Dynamic font scaling so all text fits cleanly regardless of length
+- Mobile-friendly layout built for guests on their phones
 
-The project is organized into the following directories and files:
+---
 
-- **`app.py`**: The main Python file that defines the Flask application. It contains the routes and logic for generating and displaying the bingo cards.
+## How It Works
 
-- **`requirements.txt`**: Lists all the dependencies required to run the application. This file is essential for replicating the environment on other systems or during deployment on cloud platforms like Azure.
+A single Flask route shuffles the 24 custom squares, injects the free space at center position (2,2) of the 5×5 grid, and renders the board via Jinja2.
 
-- **`static/`**: 
-  - **`styles.css`**: The CSS file that defines the styling for the bingo board and other elements of the web app.
-  - **`scripts.js`**: Contains the JavaScript that enables interaction, such as marking bingo squares.
+```python
+for i in range(5):
+    for j in range(5):
+        if i == 2 and j == 2:
+            row.append("Someone yells BINGO")
+        else:
+            row.append(bingo_texts[count])
+```
 
-- **`templates/`**: 
-  - **`bingo.html`**: The HTML file that is rendered by Flask. It defines the structure of the bingo board and is dynamically populated with data from the server.
+The frontend is intentionally light — a click toggles a `marked` CSS class, and a small JS function dynamically shrinks font size until text fits its cell cleanly.
 
-- **`.gitignore`**: A file that tells Git which files (like environment configurations or local caches) should not be tracked in version control.
+```
+app.py              # Flask app — shuffles squares and serves the board
+templates/
+  bingo.html        # Jinja2 template — renders the 5×5 grid
+static/
+  styles.css        # Board layout, square styling, marked state
+  scripts.js        # Click-to-mark toggle + dynamic font sizing
+requirements.txt    # Python dependencies
+```
 
-- **`Summary of Deploy Commands.txt`**: A text file documenting all the commands used to deploy the application to Azure, providing a clear record for future reference.
+---
 
 ## Deployment
 
-This application was successfully deployed on Azure and could be accessed via the following URL (when active):
-[https://WeddingBingo.azurewebsites.net](https://WeddingBingo.azurewebsites.net)
+The app was deployed to **Azure App Service** (Free Tier) the same day it was built, using Azure CLI and Git-based deployment. It served real users at a real wedding — which, honestly, is the metric that matters most for this one.
 
-## Notes
+The deployment is now paused to avoid charges, but the full sequence of commands to recreate it is documented in [`Summary of Deploy Commands.txt`](Summary%20of%20Deploy%20Commands.txt).
 
-The Azure deployment has been removed to avoid accidental costs, but the deployment process is documented in the project for future reference and potential re-deployment.
+The core steps:
+1. Create a resource group and Linux App Service Plan (Free Tier)
+2. Configure Git remote deployment via `az webapp deployment`
+3. Push with `git push azure main`
+
+---
+
+## Running Locally
+
+**Requirements:** Python 3.x
+
+```bash
+git clone https://github.com/James-Winslow/WeddingBingo.git
+cd WeddingBingo
+pip install -r requirements.txt
+python app.py
+```
+
+Open [http://localhost:5000](http://localhost:5000). Refresh for a new card.
+
+---
+
+## Stack
+
+| | |
+|---|---|
+| Backend | Python, Flask |
+| Frontend | HTML, CSS, JavaScript |
+| Templating | Jinja2 |
+| Hosting | Azure App Service (Free Tier) |

@@ -3,17 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bingo</title>
+    <title>Wedding Bingo 🐾</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <script src="{{ url_for('static', filename='scripts.js') }}" defer></script> <!-- Include JS file -->
+    <script src="{{ url_for('static', filename='scripts.js') }}" defer></script>
 </head>
 <body>
-    <div id="bingo-board">
-        {% for row in bingo_board %}
-            {% for item in row %}
-                <div class="bingo-square"><div>{{ item }}</div></div>
+
+    <header>
+        <div class="header-inner">
+            <div class="header-text">
+                <h1>WEDDING<span class="accent">BINGO</span></h1>
+                <p class="subtitle">Go Zags &nbsp;·&nbsp; Good luck &nbsp;·&nbsp; No cheating</p>
+            </div>
+            <button id="new-card-btn" onclick="newCard()">
+                <span>New Card</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <div id="bingo-board">
+            {% for row in bingo_board %}
+                {% for item in row %}
+                    <div class="bingo-square {% if loop.index0 % 5 == 2 and loop.index0 // 5 == 2 %}free-square{% endif %}">
+                        <div class="square-inner">
+                            <span>{{ item }}</span>
+                        </div>
+                    </div>
+                {% endfor %}
             {% endfor %}
-        {% endfor %}
-    </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Tap a square to mark it &nbsp;·&nbsp; Refresh for a new card</p>
+    </footer>
+
 </body>
 </html>
