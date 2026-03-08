@@ -12,3 +12,11 @@ cleanenv/
 node_modules/
 *.iml
 .DS_Store
+# Virtual environments
+cleanenv/
+venv/
+env/
+.venv/
+
+# macOS
+.DS_Store
