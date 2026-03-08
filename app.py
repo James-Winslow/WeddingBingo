@@ -5,7 +5,6 @@ app = Flask(__name__)
 
 @app.route('/')
 def bingo():
-    # List of all bingo square texts, except for "Corey"
     bingo_texts = [
         "Spilled Drink", "Someone Trips", "Corey", "Controversial Politics",
         "Long homily", "Shots!", "Zag flag", "Parents kiss", "YMCA", "Vanilla cake",
