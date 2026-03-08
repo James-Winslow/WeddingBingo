@@ -6,7 +6,7 @@ I was sitting with a group of college friends I hadn't seen in years, catching u
 
 **Live app:** [WeddingBingo.azurewebsites.net](https://WeddingBingo.azurewebsites.net) *(Azure deployment paused to avoid costs — see [Running Locally](#running-locally))*
 
-![WeddingBingo board](wedding_bingo_board.png)
+![WeddingBingo board](wedding_bingo_header.png)
 
 ---
 
